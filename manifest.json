@@ -1,0 +1,41 @@
+{
+  "name": "Hatena Bookmark Disorder Comments",
+  "description": "Restore the world to disorder!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/hbdc16.png",
+      "32": "/images/hbdc32.png",
+      "48": "/images/hbdc48.png",
+      "128": "/images/hbdc128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/hbdc16.png",
+    "32": "/images/hbdc32.png",
+    "48": "/images/hbdc48.png",
+    "128": "/images/hbdc128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://b.hatena.ne.jp/entry/*"
+      ],
+      "js": [
+        "content-script.js"
+      ]
+    }
+  ],
+  "options_page": "options.html"
+}
