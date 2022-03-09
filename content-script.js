@@ -24,7 +24,7 @@ function getEntryUrl() {
     }
 }
 
-function multipleNumber(color) {
+function multiplier(color) {
     if (color == "green") {
         return 2
     } else if (color == "red") {
@@ -43,7 +43,7 @@ function getStarCount(obj) {
         if ("count" in obj.entries[0].colored_stars[0].stars[0]) {
             for (let i = 0; i < obj.entries[0].colored_stars.length; i++) {
                 let color = obj.entries[0].colored_stars[i].color
-                starcount += obj.entries[0].colored_stars[i].stars.length * multipleNumber(color)
+                starcount += obj.entries[0].colored_stars[i].stars.length * multiplier(color)
             }
         } else {
             let names = []
@@ -54,7 +54,7 @@ function getStarCount(obj) {
                     names.push(obj.entries[0].colored_stars[i].stars[j].name)
                 }
                 let uniquenames = Array.from(new Set(names))
-                starcount += uniquenames.length * multipleNumber(color)
+                starcount += uniquenames.length * multiplier(color)
             }
         }
     }
