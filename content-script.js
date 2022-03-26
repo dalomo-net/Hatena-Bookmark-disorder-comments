@@ -74,6 +74,10 @@ function getStarCount(obj) {
 }
 
 async function addStarCount(data) {
+
+    let tab = document.getElementById("disorder-comments")
+    let tabname = tab.innerText
+
     let count = data.bookmarks.length
 
     for (b of data.bookmarks) {
@@ -87,11 +91,11 @@ async function addStarCount(data) {
         }
 
         if ((data.bookmarks.indexOf(b) % 10) == 0) {
-            console.log(parseInt((data.bookmarks.indexOf(b) / count) * 100) + '%')
+            tab.innerText = parseInt((data.bookmarks.indexOf(b) / count) * 100) + '%'
         }
     }
 
-    console.log('add star complete')
+    tab.innerText = tabname
     return data
 }
 
@@ -285,6 +289,10 @@ function displayBookmarks() {
 }
 
 async function main() {
+
+    await addNewTab()
+    addNewPanel()
+
     let url = getEntryUrl()
 
     let data = await fetch(url).then(res => res.json())
@@ -292,9 +300,6 @@ async function main() {
     let newdata = await formatData(addeddata)
 
     chrome.storage.local.set({ [addeddata.eid]: [newdata] })
-
-    await addNewTab()
-    addNewPanel()
 
     document.getElementById('disorder-comments').addEventListener('click', (e) => {
         if (!e.target.classList.contains('is-active')) {

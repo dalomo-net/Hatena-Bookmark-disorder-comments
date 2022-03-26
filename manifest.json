@@ -13,7 +13,6 @@
     "scripting"
   ],
   "action": {
-    "default_popup": "popup.html",
     "default_icon": {
       "16": "/images/hbdc16.png",
       "32": "/images/hbdc32.png",
